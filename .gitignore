@@ -23,7 +23,11 @@ wheels/
 .env
 .venv
 env/
-venv/
+venv-suzie/
+Env/
+Venv/
+ENV/
+VENV/
 
 # IDE
 .vscode/
