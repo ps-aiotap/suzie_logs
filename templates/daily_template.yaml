@@ -1,0 +1,32 @@
+# Daily Log Template - Copy to logs/YYYY-MM-DD.yaml
+# Timestamp will be auto-generated if not specified
+
+- timestamp: "2024-01-15T08:00:00"
+  tracker_type: "physical"
+  category: "hydration"
+  value: 2
+  notes: "Morning glasses"
+  tags: ["morning"]
+
+- timestamp: "2024-01-15T09:30:00"
+  tracker_type: "mental"
+  category: "energy"
+  value: 7
+  notes: "Good start to day"
+  tags: ["morning", "coffee"]
+
+- timestamp: "2024-01-15T14:00:00"
+  tracker_type: "work"
+  category: "context_switches"
+  value: 5
+  notes: "Slack interruptions"
+  tags: ["afternoon", "interruptions"]
+
+- timestamp: "2024-01-15T16:00:00"
+  tracker_type: "work"
+  category: "focus"
+  value:
+    duration: 90
+    quality: 8
+  notes: "Deep work session on feature X"
+  tags: ["deep-work", "coding"]
