@@ -3,6 +3,7 @@
 AI-extendable personal friction tracker for developers. Track hydration, digestion, mood, energy, sleep, and work-related friction (context switching, burnout) using YAML logs with optional AI-powered insights.
 
 ## Quick Start
+
 ```bash
 pip install -e .
 
@@ -27,6 +28,7 @@ suzie commit
 ```
 
 ## Features
+
 - **CLI-first**: Built with Click for developer-friendly interface
 - **YAML logs**: Human-readable, git-friendly daily logs
 - **Modular tracking**: Physical, mental, work, environmental categories
@@ -37,14 +39,17 @@ suzie commit
 ## Log Categories
 
 ### Physical
+
 - `hydration`: Glasses of water (1-12)
 - `digestion`: Rating 1-10 with optional symptom tags
 
-### Mental  
+### Mental
+
 - `mood`: Rating 1-10
 - `energy`: Rating 1-10
 
 ### Work
+
 - `context_switches`: Count of interruptions/task switches
 - `focus`: Duration (minutes) and quality (1-10): "90,8"
 
@@ -53,26 +58,27 @@ suzie commit
 Daily logs are stored in `logs/YYYY-MM-DD.yaml`:
 
 ```yaml
-- timestamp: "2024-01-15T09:30:00"
-  tracker_type: "mental"
-  category: "energy"
+- timestamp: '2024-01-15T09:30:00'
+  tracker_type: 'mental'
+  category: 'energy'
   value: 7
-  notes: "Good start to day"
-  tags: ["morning", "coffee"]
+  notes: 'Good start to day'
+  tags: ['morning', 'coffee']
 
-- timestamp: "2024-01-15T16:00:00"
-  tracker_type: "work"
-  category: "focus"
+- timestamp: '2024-01-15T16:00:00'
+  tracker_type: 'work'
+  category: 'focus'
   value:
     duration: 90
     quality: 8
-  notes: "Deep work on feature X"
-  tags: ["deep-work", "coding"]
+  notes: 'Deep work on feature X'
+  tags: ['deep-work', 'coding']
 ```
 
 ## AI Features
 
 ### Pattern Analysis
+
 ```bash
 # Find correlations between metrics
 suzie analyze --days 30
@@ -83,12 +89,14 @@ suzie query "high energy morning sessions"
 ```
 
 ### Recommendations
+
 ```bash
 # Get AI-powered suggestions
 suzie recommend
 ```
 
 Recommendations include:
+
 - Health patterns (hydration, energy)
 - Productivity insights (context switching, focus)
 - Product suggestions based on tracked friction
@@ -96,18 +104,20 @@ Recommendations include:
 ## Extending SuzieLogs
 
 ### Custom Trackers
+
 Add new tracker types in `suzie_logs/models/trackers.py`:
 
 ```python
 class EnvironmentalTracker(LogEntry):
     tracker_type: TrackerType = TrackerType.ENVIRONMENTAL
-    
+
     @classmethod
     def noise_level(cls, rating: int, **kwargs):
         return cls(category="noise", value=rating, **kwargs)
 ```
 
 ### AI Integration
+
 Connect your preferred LLM in `suzie_logs/ai/recommender.py`:
 
 ```python
@@ -116,7 +126,7 @@ from openai import OpenAI
 client = OpenAI(api_key="your-key")
 recommender = RecommendationEngine(store, llm_client=client)
 
-# AWS Bedrock integration  
+# AWS Bedrock integration
 from langchain.llms import Bedrock
 llm = Bedrock(model_id="anthropic.claude-v2")
 recommender = RecommendationEngine(store, llm_client=llm)
